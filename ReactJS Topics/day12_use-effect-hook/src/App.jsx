@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
+import Form from "./Form";
+import axios from "axios";
 
 const App = () => {
   let [data, setData] = useState(null);
@@ -13,22 +15,39 @@ const App = () => {
   //       console.log(mydata);
   //       setData(mydata);
   //     });
-  useEffect(function () {
-    // console.log("Shanu");
-    fetch("https://api.github.com/users")
-      .then((data) => {
-        //   console.log(data);
-        return data.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      });
-  }, []);
+
+  let [count, setCount] = useState(0);
+
+  let fetchData = async function () {
+    let data = await axios.get("https://api.github.com/users");
+    console.log(data);
+    setData(data.data);
+  };
+  useEffect(
+    function () {
+      // fetch("https://api.github.com/users")
+      //   .then((data) => {
+      //     return data.json();
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //     setData(data);
+      //   });
+      fetchData();
+      return () => {
+        console.log("Component unmounted...");
+      };
+    },
+    [count],
+  );
 
   console.log(data);
   return (
     <div>
+      <Form data={data} />
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button>Decrement</button>
       <table border="">
         <thead>
           <tr>
@@ -40,25 +59,23 @@ const App = () => {
         </thead>
         <tbody>
           {data?.map((ele, index) => {
-            console.log(ele);
+            // console.log(ele);
             return (
-              <>
-                <tr>
-                  <td>{ele.id}</td>
-                  <td>{ele.login}</td>
-                  <td>
-                    <img
-                      src={ele.avatar_url}
-                      alt=""
-                      height="100px"
-                      width="100px"
-                    />
-                  </td>
-                  <td>
-                    <a href={ele.html_url}>Visit Github Profile</a>
-                  </td>
-                </tr>
-              </>
+              <tr key={index}>
+                <td>{ele.id}</td>
+                <td>{ele.login}</td>
+                <td>
+                  <img
+                    src={ele.avatar_url}
+                    alt=""
+                    height="100px"
+                    width="100px"
+                  />
+                </td>
+                <td>
+                  <a href={ele.html_url}>Visit Github Profile</a>
+                </td>
+              </tr>
             );
           })}
         </tbody>
