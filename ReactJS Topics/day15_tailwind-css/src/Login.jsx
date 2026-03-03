@@ -14,7 +14,7 @@ const Login = () => {
           name="username"
           placeholder="Enter Username"
           id="username"
-          className="p-1.5 text-blue-800 border-b-blue-900 border-2 rounded-[10px]"
+          className="p-1.5 text-blue-800 border-b-blue-900 border-2 rounded-[10px] outline-0"
         />
         <label htmlFor="password" className="pt-1.5 pb-1.5">
           Enter Password
@@ -24,7 +24,7 @@ const Login = () => {
           name="password"
           placeholder="Enter Password"
           id="password"
-          className="p-1.5 text-blue-800 border-b-blue-900 border-2 rounded-[10px]"
+          className="p-1.5 text-blue-800 border-b-blue-900 border-2 rounded-[10px] outline-0"
         />
 
         <button className="w-full bg-blue-900 p-2 rounded-[10px] border-2 border-blue-900 font-bold transition-all ease-linear duration-200 text-white mt-1.5 hover:bg-transparent hover:text-blue-900">
