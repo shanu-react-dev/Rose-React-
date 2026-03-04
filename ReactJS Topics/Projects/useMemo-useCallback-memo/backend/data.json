@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "1"
+    },
+    {
+      "id": "1e17",
+      "username": "Shanu",
+      "gitLink": "https://www.github.com/Stack-Sculptor-Shanu"
+    },
+    {
+      "id": "f0a5",
+      "username": "Shanu",
+      "gitLink": "https://www.github.com/Stack-Sculptor-Shanu",
+      "avatar_url": "https://cdn.pixabay.com/photo/2026/01/18/10/51/love-pearls-10074583_1280.jpg"
+    }
+  ]
+}

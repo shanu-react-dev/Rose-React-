@@ -20,6 +20,7 @@ const UseMemo = () => {
     return fruitData;
   }, [count]);
   console.log(arrayData);
+  console.log("i am parent comonent");
 
   return (
     <div>
