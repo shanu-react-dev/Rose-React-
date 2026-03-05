@@ -1,10 +1,10 @@
 import React from "react";
-import GitData from "./FetchedData/GitData";
+import UserReg from "./component/UserReg";
 
 const App = () => {
   return (
     <div>
-      <GitData />
+      <UserReg />
     </div>
   );
 };
