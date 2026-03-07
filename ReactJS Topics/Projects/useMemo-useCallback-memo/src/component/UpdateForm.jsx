@@ -1,15 +1,10 @@
-import { useFormik } from "formik";
-import formSchema from "./formSchema";
-import axios from "axios";
-
 let initialdata = {
   userName: "",
   password: "",
   email: "",
   contact: "",
 };
-
-const UserReg = ({ refreshData }) => {
+const UpdateForm = () => {
   let {
     handleBlur,
     handleChange,
@@ -32,10 +27,9 @@ const UserReg = ({ refreshData }) => {
       refreshData();
     },
   });
-
   return (
     <div>
-      <h1>Registration Form</h1>
+      <h1>Update Form</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="userName">Enter Username</label>
         <input
@@ -88,4 +82,4 @@ const UserReg = ({ refreshData }) => {
   );
 };
 
-export default UserReg;
+export default UpdateForm;
