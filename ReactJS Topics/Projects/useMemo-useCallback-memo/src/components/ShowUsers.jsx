@@ -2,19 +2,16 @@ import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
 import { AiOutlineUserDelete } from "react-icons/ai";
-import UpdateForm from "../component/UpdateForm";
 
-const ShowUsers = ({ userData, fetchData }) => {
+const ShowUsers = ({ userData, fetchData, setEditUser }) => {
   let handleDelete = async (id) => {
     let { data } = await axios.delete(`http://localhost:5000/user/${id}`);
     console.log();
     fetchData();
   };
 
-  let handleUpdate = async (id) => {
-    console.log(id);
-    let { data } = await axios.get(`http://localhost:5000/user/${id}`);
-    console.log(data);
+  let handleUpdate = (data) => {
+    setEditUser(data);
   };
   return (
     <div>
@@ -39,7 +36,7 @@ const ShowUsers = ({ userData, fetchData }) => {
                   <td>{data.email}</td>
                   <td>{data.contact}</td>
                   <td>
-                    <button onClick={() => handleUpdate(data.id)}>
+                    <button onClick={() => handleUpdate(data)}>
                       <FaUserEdit />
                     </button>
                     <button onClick={() => handleDelete(data.id)}>
@@ -51,8 +48,6 @@ const ShowUsers = ({ userData, fetchData }) => {
             );
           })}
         </tbody>
-
-        <UpdateForm />
       </table>
     </div>
   );

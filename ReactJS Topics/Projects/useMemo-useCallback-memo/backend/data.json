@@ -1,10 +1,52 @@
 {
   "user": [
     {
-      "id": "e7ea",
+      "id": "9ca9",
+      "userName": "Rohit",
+      "password": "shivam@1234",
+      "email": "rohit@icc.com",
+      "contact": "1234567890"
+    },
+    {
+      "id": "3220",
+      "userName": "Ishant Sharma",
+      "password": "Abhi1234",
+      "email": "ishant@icc.com",
+      "contact": "1234567890"
+    },
+    {
+      "id": "d37c",
+      "userName": "Trent Boult",
+      "password": "Ambati@CSK",
+      "email": "trent.nz@gmail.com",
+      "contact": "1234567890"
+    },
+    {
+      "id": "fc56",
       "userName": "Shanu",
-      "password": "shnau123456",
-      "email": "shanu@gmail.com",
+      "password": "12345678",
+      "email": "shanu@google.io",
+      "contact": "1234567890"
+    },
+    {
+      "id": "0d48",
+      "userName": "Shanu",
+      "password": "12345678",
+      "email": "shanu@google.io",
+      "contact": "1234567890"
+    },
+    {
+      "id": "044b",
+      "userName": "Virat Kohli",
+      "password": "sHIVAMaajsf",
+      "email": "A.@GMAIL.COM",
+      "contact": "1234567890"
+    },
+    {
+      "id": "598f",
+      "userName": "Dhinesh",
+      "password": "dhini!234",
+      "email": "dhinesh@gmail.com",
       "contact": "1234567890"
     }
   ]

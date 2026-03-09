@@ -1,54 +1,51 @@
 import { useFormik } from "formik";
-import formSchema from "./formSchema";
+import formSchema from "../component/formSchema";
 import axios from "axios";
 import { useEffect } from "react";
 
-let initialdata = {
+let initialData = {
   userName: "",
   password: "",
   email: "",
   contact: "",
 };
 
-const UserReg = ({ refreshData, setEditUser, editUser }) => {
+const Registration = ({ refreshData, editUser, setEditUser }) => {
   let {
     handleBlur,
     handleChange,
     handleSubmit,
     values,
-    errors,
-    touched,
     resetForm,
+    errors,
     setValues,
   } = useFormik({
-    initialValues: initialdata,
+    initialValues: initialData,
     validationSchema: formSchema,
     onSubmit: async (data) => {
       try {
-        if (editUser != null) {
+        if (editUser) {
           await axios.put(`http://localhost:5000/user/${editUser.id}`, data);
+          refreshData();
           setEditUser(null);
         } else {
           await axios.post("http://localhost:5000/user", data);
         }
-
-        refreshData();
         resetForm();
       } catch (error) {
         console.log(error);
       }
     },
   });
-  console.log(editUser);
 
   useEffect(() => {
-    if (editUser != null) {
+    if (editUser) {
       setValues(editUser);
     }
   }, [editUser]);
   return (
     <div>
-      <h1>{editUser != null ? "Update Form" : "Register Here"}</h1>
+      <h1>{editUser ? "Update Form" : "Register Here"}</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="userName">Enter Username</label>
         <input
@@ -56,23 +53,20 @@ const UserReg = ({ refreshData, setEditUser, editUser }) => {
           name="userName"
           id="userName"
           placeholder="Enter Username"
-          onChange={handleChange}
           onBlur={handleBlur}
+          onChange={handleChange}
           value={values.userName}
         />
-
-        <p>{touched.userName && errors.userName ? errors.userName : ""}</p>
         <label htmlFor="password">Enter Password</label>
         <input
           type="password"
           name="password"
           id="password"
           placeholder="Enter Password"
-          onChange={handleChange}
           onBlur={handleBlur}
+          onChange={handleChange}
           value={values.password}
         />
-        <p>{touched.password && errors.password ? errors.password : ""}</p>
         <label htmlFor="email">Enter email</label>
         <input
           type="email"
@@ -83,24 +77,22 @@ const UserReg = ({ refreshData, setEditUser, editUser }) => {
           onBlur={handleBlur}
           value={values.email}
         />
-        <p>{touched.email && errors.email ? errors.email : ""}</p>
         <label htmlFor="contact">Enter Contact</label>
         <input
           type="tel"
           name="contact"
           id="contact"
           placeholder="Enter Contact"
-          onChange={handleChange}
           onBlur={handleBlur}
+          onChange={handleChange}
           value={values.contact}
         />
-        <p>{touched.contact && errors.contact ? errors.contact : ""}</p>
         <button type="submit">
-          {editUser != null ? "Update Form" : "Register.."}
+          {editUser ? "Update Form" : "Register Here"}
         </button>
       </form>
     </div>
   );
 };
 
-export default UserReg;
+export default Registration;
