@@ -22,6 +22,7 @@ const Forms = () => {
     validationSchema: FormSchema,
     onSubmit: (data) => {
       console.log(data);
+      localStorage.setItem("data", JSON.stringify(data));
       handleReset();
     },
   });
