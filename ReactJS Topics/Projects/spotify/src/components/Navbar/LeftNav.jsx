@@ -19,7 +19,7 @@ const LeftNav = () => {
           data-encore-id="icon"
           role="img"
           aria-hidden="true"
-          class="e-91000-icon e-91000-baseline"
+          className="e-91000-icon e-91000-baseline"
           viewBox="0 0 24 24"
           height={"20px"}
         >

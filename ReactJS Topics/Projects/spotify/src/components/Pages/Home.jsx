@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import SideBar from "../sideBar/SideBar";
 import Content from "../Content/Content";
+import { userContext } from "../../utilites/UserContext";
 
 const Home = () => {
+  let { user, setUser } = useContext(userContext);
+  console.log(user);
   return (
     <div className="homepage">
       <SideBar />
-      <Content />
+      <Content data={{ user, setUser }} />
     </div>
   );
 };

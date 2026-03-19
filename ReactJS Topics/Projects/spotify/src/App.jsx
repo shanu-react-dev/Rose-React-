@@ -3,7 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./components/Pages/Home";
 import Login from "./AuthFolder/Login";
-import PrivateRouting from "./utilites/PrivateRouting";
+// import PrivateRouting from "./utilites/PrivateRouting";
+import Signup from "./AuthFolder/Signup";
+import UserContext from "./utilites/UserContext";
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -13,11 +15,7 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: (
-            <PrivateRouting>
-              <Home />
-            </PrivateRouting>
-          ),
+          element: <Home />,
         },
       ],
     },
@@ -25,9 +23,17 @@ const App = () => {
       path: "login",
       element: <Login />,
     },
+    {
+      path: "register",
+      element: <Signup />,
+    },
   ]);
 
-  return <RouterProvider router={routes}></RouterProvider>;
+  return (
+    <UserContext>
+      <RouterProvider router={routes} />
+    </UserContext>
+  );
 };
 
 export default App;

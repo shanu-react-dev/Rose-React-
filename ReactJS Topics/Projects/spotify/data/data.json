@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id": "0ab1",
+      "name": "shanu",
+      "email": "shanu@google.io",
+      "imgUrl": "http://localhost:5000/users"
+    }
+  ]
+}

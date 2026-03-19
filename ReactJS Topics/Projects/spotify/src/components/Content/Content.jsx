@@ -1,10 +1,10 @@
 import React from "react";
 import MediaControlCard from "../../ReusableItems/MediaControlCard";
 
-const Content = () => {
+const Content = (data) => {
   return (
     <div className="content">
-      <MediaControlCard />
+      <MediaControlCard {...data} />
     </div>
   );
 };
