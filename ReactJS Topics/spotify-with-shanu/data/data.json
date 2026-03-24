@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "234a",
+      "username": "shanu",
+      "email": "shanu@google.io",
+      "password": "shanu123"
+    },
+    {
+      "id": "f37b",
+      "username": "amarjeet",
+      "email": "amarjeetjtpr@gmail.com",
+      "password": "amarjeet"
+    },
+    {
+      "id": "bf56",
+      "username": "shanuq",
+      "email": "www.@gmail.com",
+      "password": "shanu123$"
+    },
+    {
+      "id": "c8c8",
+      "username": "shubham",
+      "email": "shubham@gmail.com",
+      "password": "shaubha"
+    }
+  ]
+}
