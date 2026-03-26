@@ -1,8 +1,9 @@
-import React, { useReducer } from 'react'
+import { useContext, useReducer } from 'react'
 import { Reducer } from '../utilities/Reducer'
 import axios from "axios"
 import {ToastContainer, toast} from "react-toastify"
 import {useNavigate} from "react-router-dom"
+import { userContext } from '../context/UserContext'
 
 let loginData = {
   email: "",
@@ -11,6 +12,7 @@ let loginData = {
 const Login = () => {
   let [initialData, dispatch] = useReducer(Reducer, loginData)
   let navigate = useNavigate()
+  let {setUser} = useContext(userContext)
 
   let handleChange = (e) => {
     let { name, value } = e.target
@@ -27,6 +29,8 @@ const Login = () => {
           position: 'top-right',
           autoClose: 2000,
         })
+        setUser(initialData)
+        localStorage.setItem("user", JSON.stringify(initialData))
         setTimeout(() => {
           navigate("/")
         }, 2000);
