@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const MusicCard = ({data}) => {
   const navigate = useNavigate()
 
-  let {user, setUser} = data
+  let {user} = data
   let handlePlay = (e) => {
     if(!user){
       navigate("/login")
