@@ -1,13 +1,20 @@
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import MusicCard from "../Reusable_UI_Comp/MusicCard";
 import { userContext } from "./context/UserContext";
+import { arrOfMusic } from "./utilities/MusicData";
 
 const Home = () => {
   let data = useContext(userContext);
-  console.log(data);
+  let {user} = data
   return (
     <div>
-      <MusicCard data={data} />
+      {
+        arrOfMusic.map((ele, index)=>{
+          return <Fragment key={index}>
+            <MusicCard {...ele} data= {user}/>
+          </Fragment>
+        })
+      }
     </div>
   );
 };

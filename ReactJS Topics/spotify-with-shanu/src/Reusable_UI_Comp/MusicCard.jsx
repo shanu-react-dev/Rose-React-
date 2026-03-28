@@ -1,37 +1,50 @@
-import { arrOfMusic } from "../components/utilities/MusicData";
-import { Fragment } from "react";
 import { FaPlay } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { FaPause } from "react-icons/fa";
+import { usePlayer } from "../components/context/PlayerContext";
 
-const MusicCard = ({data}) => {
+const MusicCard = ({audio_url,img_url,songName,singerName, data}) => {
   const navigate = useNavigate()
+  const { currentSong, playSong, pauseSong } = usePlayer()
+  const isPlaying = currentSong === audio_url;
 
-  let {user} = data
-  let handlePlay = (e) => {
-    if(!user){
-      navigate("/login")
+  console.log(audio_url)
+  // let handlePlay = (e) => {
+  //   if(!data){
+  //     navigate("/login")
+  //   }else{
+  //     toggle()
+  //   }
+    
+  // }
+
+  let handlePlay = () => {
+  if (!data) {
+    navigate("/login");
+  } else {
+    if (isPlaying) {
+      pauseSong();
+    } else {
+      playSong(audio_url);
     }
   }
+};
   
   return (
     <div className="card">
-      {arrOfMusic.map((ele, index) => {
-        return (
-          <Fragment key={index}>
             <div className="thumbnail">
-              <img src={ele.img_url} alt="" />
+              <img src={img_url} alt="" />
               <div className="playBtn" onClick={handlePlay}>
-                <FaPlay/>
+                {
+                  isPlaying? <FaPause />: <FaPlay/>
+                }
               </div>
             </div>
 
             <div className="details">
-              <h3 className="songName">{ele.songName}</h3>
-              <p className="singers">{ele.singerName}</p>
+              <h3 className="songName">{songName}</h3>
+              <p className="singers">{singerName}</p>
             </div>
-          </Fragment>
-        );
-      })}
     </div>
   );
 };
