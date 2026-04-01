@@ -1,13 +1,16 @@
 import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
-import { cbSlicer } from "./redux/features/inputFeature";
+import { cbSlicer, genderSlicer } from "./redux/features/inputFeature";
 
 function App() {
   let skills = useSelector((state) => state.checkBoxSlicer.skills)
+  let gender = useSelector((state) => state.checkBoxSlicer.gender)
+  console.log(gender)
   let dispatch = useDispatch()
   // const [skills, setSkills] = useState([]);
   // const [gender, setGender] = useState("");
 
+  //! React checkbox
   // const handleChange = (e) => {
   //   console.log(e.target.checked);
   //   let {name, value, checked} = e.target
@@ -17,17 +20,25 @@ function App() {
   //     setSkills(skills.filter((ele)=>ele!=value))
   //   }
   // };
+  //! react radio
   // const handleGenderChange = (e) => {
   //   setGender(e.target.value);
   // };
 
+  //! redux radio
+  const handleGenderChange = (e) => {
+    let {name, value, checked} = e.target
+    dispatch(genderSlicer({type: "genderSelect", value, checked}))
+  }
+
+  //! Redux checkbox
   const handleChange = (e) => {
     let {name, value, checked} = e.target
     dispatch(cbSlicer({type: "skillsSelect", value, checked}))
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(skills);
+    console.log({skills, gender});
     // console.log({gender, skills})
   };
   return (
@@ -85,7 +96,7 @@ function App() {
         <br />
         <br />
 
-        {/* <label htmlFor="gender">Select Gender: </label>
+        <label htmlFor="gender">Select Gender: </label>
         <input
           type="radio"
           name="gender"
@@ -109,7 +120,7 @@ function App() {
           value={"others"}
           onChange={handleGenderChange}
         />
-        <label htmlFor="others">Others</label> */}
+        <label htmlFor="others">Others</label>
         <button type="submit">Submit</button>
 
         {/* <h1>{skills.toString()}</h1> */}
