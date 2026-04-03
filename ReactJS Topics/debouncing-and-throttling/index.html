@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            height: 200vh;
+        }
+        section{
+            position: fixed;
+        }
+        p{
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body onscroll="showCount()">
+    <section>
+        <p class="normalCount">Normal Count</p>
+        <p class="throttleCount">Throttle Count</p>
+        <p class="debounceCount">Debounce Count</p>
+    </section>
+    <script src="./script.js"></script>
+</body>
+</html>
