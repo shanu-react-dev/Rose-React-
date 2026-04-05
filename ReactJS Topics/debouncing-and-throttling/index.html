@@ -10,10 +10,17 @@
             height: 200vh;
         }
         section{
-            position: fixed;
+            /* position: fixed; */
         }
         p{
             font-size: 3rem;
+        }
+
+        #searchTerm{
+            padding: 10px;
+            width: 500px;
+            border-radius: 10px;
+
         }
     </style>
 </head>
@@ -23,6 +30,9 @@
         <p class="throttleCount">Throttle Count</p>
         <p class="debounceCount">Debounce Count</p>
     </section>
+    <input type="search" name="searchTerm" id="searchTerm" placeholder="Enter something to search">
+    <p class="normalVal"></p>
+    <p class="debounceVal"></p>
     <script src="./script.js"></script>
 </body>
 </html>
